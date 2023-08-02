@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>To do list</title>
+</head>
+<body>
+    <header id="head">
+        <ul class="menu">
+            <li><i class="fa-regular fa-calendar-days" style="font: size 68px;"></i> Today</li>
+            <li>Work</li>
+        </ul>
+    </header>
+    <div class="fbox">
+    <div class="topbox">
+        <div>Today</div>
+    </div>
+</div>
+<div class="secbox">
+    <div class="sbox">
+    <form class="entry" action="/add" method="post">
+        <input type="text" name="todo"placeholder="enter the work">
+        <button type="submit" class="add"><i class="fa-solid fa-plus"></i></button>
+    </form>
+</div>
+</div>
+<div class="lbox">
+<div class="todobox">
+    <% if(locals.tasks){ %>
+        <form action="/delete" method="post">
+        <% tasks.forEach(item => { %>
+            <div class="item">
+                <input type="checkbox" class="cheakbox" name="check"value="<%=item._id%>" />
+                <p><%= item.name %> </p>
+        </div>
+    <% })} %>
+    <button type="submit">delete</button>
+</form>
+</div>
+</div>
+<div class="foter">
+<footer>
+    Copyright <%= new Date().getFullYear() %> swapnil mohite
+</footer>
+</div>
+</body>
+</html>
